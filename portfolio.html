@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f7f4;
+    --surface:#ffffff;
+    --ink:#1c2027;
+    --ink-soft:#4a5058;
+    --ink-faint:#8a909a;
+    --border:#e4e1da;
+    --navy:#23395b;
+    --navy-deep:#182842;
+    --gold:#a9822f;
+    --sans:'Inter', -apple-system, sans-serif;
+    --display:'Sora', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--navy); color:#fff;}
+  :focus-visible{outline:2px solid var(--navy); outline-offset:3px;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+  /* ---------------- Nav ---------------- */
+  header.nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(248,247,244,.92);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-name{font-family:var(--display); font-weight:700; font-size:17px; letter-spacing:-.01em;}
+  .nav-links{display:flex; gap:28px; list-style:none;}
+  .nav-links a{
+    font-size:14px; color:var(--ink-soft); text-decoration:none;
+    padding:4px 0; border-bottom:2px solid transparent;
+  }
+  .nav-links a:hover{color:var(--navy); border-color:var(--navy);}
+  .nav-cta{
+    font-size:13.5px; font-weight:600; color:#fff; background:var(--navy);
+    padding:9px 18px; border-radius:4px; text-decoration:none; white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--navy-deep);}
+  .nav-toggle{display:none; background:none; border:1px solid var(--border); border-radius:4px; padding:7px 10px; font-size:13px;}
+
+  /* ---------------- Hero ---------------- */
+  .hero{padding:88px 0 64px;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
+  .eyebrow{
+    font-size:13.5px; font-weight:600; color:var(--navy);
+    display:flex; align-items:center; gap:9px; margin-bottom:18px;
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:#3fa66b; display:inline-block;}
+  .hero h1{
+    font-family:var(--display); font-weight:800; letter-spacing:-.02em;
+    font-size:clamp(34px,4.6vw,52px); line-height:1.08; margin-bottom:20px;
+    color:var(--ink);
+  }
+  .hero h1 span{color:var(--navy);}
+  .hero p.lede{font-size:17.5px; color:var(--ink-soft); max-width:52ch; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
+  .btn{
+    font-size:14.5px; font-weight:600; padding:13px 24px; border-radius:5px;
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn.primary{background:var(--navy); color:#fff;}
+  .btn.primary:hover{background:var(--navy-deep);}
+  .btn.outline{border:1.5px solid var(--border); color:var(--ink); background:var(--surface);}
+  .btn.outline:hover{border-color:var(--navy); color:var(--navy);}
+  .hero-contacts{display:flex; flex-wrap:wrap; gap:20px; font-size:14px; color:var(--ink-soft);}
+  .hero-contacts a{text-decoration:none; border-bottom:1px solid var(--border);}
+  .hero-contacts a:hover{color:var(--navy); border-color:var(--navy);}
+
+  .hero-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:28px; box-shadow:0 1px 2px rgba(28,32,39,.04);
+  }
+  .hero-card .avatar{
+    width:150px; height:150px; border-radius:50%;
+    background:linear-gradient(135deg,var(--navy),#3a5a8a);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:700; font-size:22px; margin-bottom:18px;
+    overflow:hidden;
+  }
+
+  .hero-card .avatar img{
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:50%;
+  }
+  .hero-card h3{font-family:var(--display); font-size:17px; margin-bottom:2px;}
+  .hero-card .role{font-size:13.5px; color:var(--ink-faint); margin-bottom:20px;}
+  .stat-row{display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid var(--border);}
+  .stat-row:first-of-type{border-top:none;}
+  .stat-row .lbl{font-size:13px; color:var(--ink-soft);}
+  .stat-row .val{font-size:13.5px; font-weight:600; color:var(--ink);}
+
+  /* ---------------- Section shell ---------------- */
+  section{padding:72px 0; border-top:1px solid var(--border);}
+  .section-label{
+    font-size:12.5px; font-weight:700; letter-spacing:.06em; color:var(--gold);
+    margin-bottom:10px;
+  }
+  .section-title{
+    font-family:var(--display); font-weight:700; font-size:clamp(24px,3vw,32px);
+    letter-spacing:-.01em; margin-bottom:14px;
+  }
+  .section-intro{color:var(--ink-soft); max-width:62ch; margin-bottom:44px; font-size:15.5px;}
+
+  /* ---------------- About ---------------- */
+  .about-grid{display:grid; grid-template-columns:1.3fr .7fr; gap:52px;}
+  .about-grid p{color:var(--ink-soft); margin-bottom:16px; max-width:60ch;}
+  .about-grid p .hl{color:var(--ink); font-weight:600;}
+  .fact-list{list-style:none;}
+  .fact-list li{
+    display:flex; justify-content:space-between; padding:13px 0;
+    border-bottom:1px solid var(--border); font-size:14px;
+  }
+  .fact-list li:last-child{border-bottom:none;}
+  .fact-list .k{color:var(--ink-faint);}
+  .fact-list .v{color:var(--ink); font-weight:500; text-align:right;}
+
+  /* ---------------- Skills ---------------- */
+  .skill-groups{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:24px;}
+  .skill-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:22px;
+  }
+  .skill-card h4{font-size:14px; font-weight:700; margin-bottom:14px; color:var(--navy);}
+  .skill-card ul{list-style:none;}
+  .skill-card li{
+    font-size:14px; color:var(--ink-soft); padding:6px 0; display:flex; align-items:center; gap:9px;
+  }
+  .skill-card li::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0;}
+
+  /* ---------------- Experience timeline ---------------- */
+  .timeline{list-style:none; border-left:2px solid var(--border); margin-left:6px;}
+  .tl-item{position:relative; padding:2px 0 40px 30px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-7px; top:4px;
+    width:12px; height:12px; border-radius:50%; background:var(--navy); border:3px solid var(--bg);
+  }
+  .tl-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .tl-item h3{font-family:var(--display); font-size:17.5px; font-weight:700;}
+  .tl-item .when{font-size:13px; color:var(--ink-faint); font-weight:500; white-space:nowrap;}
+  .tl-item .kind{font-size:13.5px; color:var(--navy); font-weight:600; margin-bottom:8px;}
+  .tl-item p{color:var(--ink-soft); font-size:14.5px; max-width:62ch; margin-bottom:10px;}
+  .pill-row{display:flex; flex-wrap:wrap; gap:7px;}
+  .pill{
+    font-size:12px; color:var(--ink-soft); background:var(--surface);
+    border:1px solid var(--border); padding:4px 10px; border-radius:20px;
+  }
+
+  /* ---------------- Projects ---------------- */
+  .project-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px;}
+  .project-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:26px; display:flex; flex-direction:column; gap:12px;
+  }
+  .project-card .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .project-card h3{font-family:var(--display); font-size:17px; font-weight:700;}
+  .project-card .tag{
+    font-size:11.5px; font-weight:600; color:var(--navy); background:rgba(35,57,91,.08);
+    padding:4px 9px; border-radius:4px; white-space:nowrap;
+  }
+  .project-card p{color:var(--ink-soft); font-size:14px; flex-grow:1;}
+  .project-card .result{
+    font-size:13px; color:var(--ink); font-weight:600; padding-top:10px; border-top:1px solid var(--border);
+  }
+  .project-card .result .lbl{color:var(--gold); font-weight:700;}
+
+  /* ---------------- Education ---------------- */
+  .edu-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:28px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+  }
+  .edu-card h3{font-family:var(--display); font-size:17px; margin-bottom:4px;}
+  .edu-card .school{color:var(--ink-soft); font-size:14.5px;}
+  .edu-card .when{font-size:13.5px; color:var(--ink-faint); font-weight:500; white-space:nowrap;}
+
+  /* ---------------- Contact ---------------- */
+  .contact-box{
+    background:var(--navy-deep); color:#fff; border-radius:14px;
+    padding:56px 48px; display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center;
+  }
+  .contact-box h2{font-family:var(--display); font-size:clamp(24px,3vw,30px); margin-bottom:14px;}
+  .contact-box p{color:#c3cbdb; max-width:48ch; font-size:15px;}
+  .contact-list{list-style:none; display:flex; flex-direction:column; gap:14px;}
+  .contact-list li{display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.14); padding-bottom:12px;}
+  .contact-list .k{font-size:12.5px; color:#93a0bd; text-transform:uppercase; letter-spacing:.04em;}
+  .contact-list a{color:#fff; text-decoration:none; font-weight:500; font-size:14.5px;}
+  .contact-list a:hover{color:#e0c98a;}
+
+  footer{padding:32px; text-align:center; font-size:13px; color:var(--ink-faint);}
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  @media (max-width:860px){
+    .hero-grid, .about-grid, .contact-box{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .nav-toggle{display:inline-block;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Open to full-time and freelance roles</div>
+      <h1>I build software and handle the E-commerce work that keeps it running.</h1>
+      <p class="lede">
+        Full-stack developer who also covers the e-commerce side, payment integrations, back office
+        tools, WordPress and VPS setups, an auto-publishing system I built called NetGrid, plus
+        running Google Ads and day-to-day Shopify support.
+      </p>
+      <div class="hero-actions">
+        <a href="https://drive.google.com/file/d/1Va3wKOeE-f-KQwYR1W5ZNdATqYvCrPOS/view?usp=sharing" class="btn primary" id="resumeLink">Download resume (PDF)</a>
+        <a href="#projects" class="btn outline">View projects</a>
+      </div>
+      <div class="hero-contacts">
+        <a href="mailto:solisangelito098@gmail.com">solisangelito098@gmail.com</a>
+        <a href="https://www.linkedin.com/in/angelito-solis-0a510928a/">linkedin.com/in/solisangelito</a>
+        <a href="https://github.com/AngelitoSolis">github.com/AngelitoSolis</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="avatar">
+  <img src="photo.jpg" alt="Angelito Solis">
+</div>
+      <h3>Angelito Solis</h3>
+      <div class="role">Full-Stack Developer & E-Commerce Support</div>
+      <div class="stat-row"><span class="lbl">Based in</span><span class="val">Philippines</span></div>
+      <div class="stat-row"><span class="lbl">Focus</span><span class="val">Full-stack & E-commerce</span></div>
+      <div class="stat-row"><span class="lbl">Status</span><span class="val">Open to work</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-label">ABOUT</div>
+      <h2 class="section-title">A little about me</h2>
+      <p>
+        I build and maintain web systems, I built <span class="hl">NetGrid</span>, a tool
+        that auto-publishes blogs to Shopify and WordPress, and I also handle day-to-day Shopify store
+        support and WordPress/VPS setups for clients.
+      </p>
+      <p>
+        I take on freelance and team work across e-commerce, back office systems, Google Ads,
+        and custom web tools. I try to keep my documentation clear and to the point. I like working
+        on things a real person actually has to use.
+      </p>
+    </div>
+    <div>
+      <ul class="fact-list">
+        <li><span class="k">Education</span><span class="v">BSIT, PSU Urdaneta</span></li>
+        <li><span class="k">Focus areas</span><span class="v">Web, E-commerce, Automation</span></li>
+        <li><span class="k">Availability</span><span class="v">Full-time / Freelance</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-label">SKILLS</div>
+    <h2 class="section-title">What I work with</h2>
+    <p class="section-intro">Everything here is stuff I've actually used on real projects, not just read about.</p>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h4>Languages</h4>
+        <ul>
+          <li>JavaScript / TypeScript</li>
+          <li>SQL</li>
+          <li>PHP</li>
+          <li>Python</li>
+          <li>C#</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Frameworks</h4>
+        <ul>
+          <li>Next.js</li>
+          <li>Laravel</li>
+          <li>Flutter</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Platforms & APIs</h4>
+        <ul>
+          <li>Shopify (OAuth / Admin API)</li>
+          <li>WordPress</li>
+          <li>Stripe</li>
+          <li>VPS Hosting & Management</li>
+          <li>MySQL / SQLite</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>E-Commerce & Support</h4>
+        <ul>
+          <li>Shopify order management</li>
+          <li>Customer inquiry handling</li>
+          <li>Concern resolution</li>
+          <li>Google Ads campaigns</li>
+          <li>Reviews management</li>
+          <li>Store operations</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-label">EXPERIENCE</div>
+    <h2 class="section-title">Recent work</h2>
+    <ul class="timeline">
+      
+      
+    
+      <li class="tl-item">
+        <div class="tl-top"><h3>Customer Service Support - Shopify E-Commerce</h3><span class="when"></span></div>
+        <div class="kind">Support Specialist</div>
+        <p>Handle customer concerns, order issues, and general inquiries for a Shopify store, the
+        support side of running an online shop.</p>
+        <div class="pill-row"><span class="pill">Shopify</span><span class="pill">Order Management</span><span class="pill">Customer Support</span></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-top"><h3>Google Ads & Reviews Management</h3><span class="when"></span></div>
+        <div class="kind">Specialist</div>
+        <p>Run Google Ads campaigns and manage reviews as part of the day-to-day e-commerce work,
+        alongside the technical and support side.</p>
+        <div class="pill-row"><span class="pill">Google Ads</span><span class="pill">Reviews Management</span></div>
+      </li>
+        <li class="tl-item">
+        <div class="tl-top"><h3>NetGrid — Automated Publishing System</h3><span class="when"><span></div>
+        <div class="kind">Developer</div>
+        <p>Built NetGrid to auto-publish content to Shopify stores and WordPress blogs, so it
+        doesn't have to be done by hand every time.</p>
+        <div class="pill-row"><span class="pill">Shopify</span><span class="pill">WordPress</span><span class="pill">Automation</span></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-top"><h3>WordPress & VPS Website Builds</h3><span class="when"></span></div>
+        <div class="kind">Developer</div>
+        <p>Build and deploy client websites on WordPress, plus set up and manage the VPS hosting
+        behind them.</p>
+        <div class="pill-row"><span class="pill">WordPress</span><span class="pill">VPS</span><span class="pill">Deployment</span></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-top"><h3>Next.js Commerce Integrations</h3><span class="when"></span></div>
+        <div class="kind">Developer</div>
+        <p>Worked on Next.js projects with Stripe payments, webhook forwarding through the Stripe
+        CLI, plus Shopify OAuth and admin API integration.</p>
+        <div class="pill-row"><span class="pill">Next.js</span><span class="pill">Stripe API</span><span class="pill">Shopify OAuth</span></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-top"><h3>Daily Time Record (DTR) System</h3><span class="when"></span></div>
+        <div class="kind">Developer</div>
+        <p>Built a Laravel attendance system with its own auth layer, plus rules for lateness and
+        undertime. Started on SQLite, then moved everything over to MySQL.</p>
+        <div class="pill-row"><span class="pill">Laravel</span><span class="pill">MySQL</span><span class="pill">Auth Middleware</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-label">PROJECTS</div>
+    <h2 class="section-title">Selected work</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="top"><h3>NetGrid</h3><span class="tag">Automation</span></div>
+        <p>Auto-publishes content to Shopify stores and WordPress blogs, so it doesn't have to be done manually.</p>
+        <div class="result"><span class="lbl">Outcome —</span> My most recent build, live and running across both platforms.</div>
+      </div>
+      <div class="project-card">
+        <div class="top"><h3>WordPress & VPS Builds</h3><span class="tag">Web / Hosting</span></div>
+        <p>Client websites on WordPress, plus the VPS setup and hosting management behind them.</p>
+        <div class="result"><span class="lbl">Outcome —</span> Handled everything from build to deployment.</div>
+      </div>
+      <div class="project-card">
+        <div class="top"><h3>DTR Attendance System</h3><span class="tag">Web App</span></div>
+        <p>A Laravel tool for tracking staff attendance, with real lateness and undertime logic instead of a plain in-out log.</p>
+        <div class="result"><span class="lbl">Outcome —</span> Working DTR Attendance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-label">EDUCATION</div>
+    <h2 class="section-title">Background</h2>
+    <div class="edu-card">
+      <div>
+        <h3>Bachelor of Science in Information Technology</h3>
+        <div class="school">Pangasinan State University – Urdaneta City Campus</div>
+      </div>
+      <div class="when">2025</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Let's talk.</h2>
+        <p>Open to full-time roles and freelance projects. Reach out any time.</p>
+      </div>
+      <ul class="contact-list">
+        <li><span class="k">Email</span><a href="mailto:solisangelito098@gmail.com">solisangelito098@gmail.com</a></li>
+        <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/angelito-solis-0a510928a/">linkedin.com/in/solisangelito</a></li>
+        <li><span class="k">GitHub</span><a href="https://github.com/AngelitoSolis">github.com/AngelitoSolis</a></li>
+        <li><span class="k">Location</span><span style="font-weight:500;">Pangasinan, Philippines</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
