@@ -3,437 +3,317 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Full-Stack Developer</title>
+<title>Angelito Solis | Full-Stack & Shopify Website Developer</title>
+<meta name="description" content="Full-stack developer and Shopify website developer with 2+ years of e-commerce support experience. Payment integrations, back-office tools, and automation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+:root{
+  --bg:#f8f7f4; --surface:#fff; --ink:#1c2027; --soft:#4a5058; --faint:#7d838d;
+  --border:#e4e1da; --navy:#23395b; --navy-deep:#182842; --gold:#a9822f;
+  --tint:rgba(35,57,91,.08); --nav-bg:rgba(248,247,244,.92);
+  --sans:'Inter',-apple-system,'Segoe UI',sans-serif; --display:'Sora',-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){
   :root{
-    --bg:#f8f7f4;
-    --surface:#ffffff;
-    --ink:#1c2027;
-    --ink-soft:#4a5058;
-    --ink-faint:#8a909a;
-    --border:#e4e1da;
-    --navy:#23395b;
-    --navy-deep:#182842;
-    --gold:#a9822f;
-    --sans:'Inter', -apple-system, sans-serif;
-    --display:'Sora', -apple-system, sans-serif;
+    --bg:#12161c; --surface:#1a2029; --ink:#eef0f3; --soft:#b3bac5; --faint:#8a929e;
+    --border:#2a323d; --navy:#7fa3d6; --navy-deep:#0d1a2f; --gold:#d4b062;
+    --tint:rgba(127,163,214,.14); --nav-bg:rgba(18,22,28,.92);
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--sans);
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;}
-  img{max-width:100%;display:block;}
-  ::selection{background:var(--navy); color:#fff;}
-  :focus-visible{outline:2px solid var(--navy); outline-offset:3px;}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+  .btn.primary,.nav-cta{color:#0d1a2f}
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+::selection{background:var(--navy);color:#fff}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 
-  /* ---------------- Nav ---------------- */
-  header.nav{
-    position:sticky; top:0; z-index:100;
-    background:rgba(248,247,244,.92);
-    backdrop-filter:saturate(180%) blur(8px);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-inner{
-    max-width:1080px; margin:0 auto; padding:16px 32px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .nav-name{font-family:var(--display); font-weight:700; font-size:17px; letter-spacing:-.01em;}
-  .nav-links{display:flex; gap:28px; list-style:none;}
-  .nav-links a{
-    font-size:14px; color:var(--ink-soft); text-decoration:none;
-    padding:4px 0; border-bottom:2px solid transparent;
-  }
-  .nav-links a:hover{color:var(--navy); border-color:var(--navy);}
-  .nav-cta{
-    font-size:13.5px; font-weight:600; color:#fff; background:var(--navy);
-    padding:9px 18px; border-radius:4px; text-decoration:none; white-space:nowrap;
-  }
-  .nav-cta:hover{background:var(--navy-deep);}
-  .nav-toggle{display:none; background:none; border:1px solid var(--border); border-radius:4px; padding:7px 10px; font-size:13px;}
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:var(--display);font-weight:700;font-size:17px;text-decoration:none;letter-spacing:-.01em}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{font-size:14px;color:var(--soft);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--navy);border-color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cta{font-size:13.5px;font-weight:600;color:#fff;background:var(--navy);padding:9px 18px;border-radius:6px;text-decoration:none;white-space:nowrap}
+.nav-cta:hover{opacity:.9}
+.nav-toggle{display:none;background:none;border:1px solid var(--border);color:var(--ink);border-radius:6px;padding:8px 12px;font:500 13px var(--sans);cursor:pointer}
 
-  /* ---------------- Hero ---------------- */
-  .hero{padding:88px 0 64px;}
-  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
-  .eyebrow{
-    font-size:13.5px; font-weight:600; color:var(--navy);
-    display:flex; align-items:center; gap:9px; margin-bottom:18px;
-  }
-  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:#3fa66b; display:inline-block;}
-  .hero h1{
-    font-family:var(--display); font-weight:800; letter-spacing:-.02em;
-    font-size:clamp(34px,4.6vw,52px); line-height:1.08; margin-bottom:20px;
-    color:var(--ink);
-  }
-  .hero h1 span{color:var(--navy);}
-  .hero p.lede{font-size:17.5px; color:var(--ink-soft); max-width:52ch; margin-bottom:32px;}
-  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
-  .btn{
-    font-size:14.5px; font-weight:600; padding:13px 24px; border-radius:5px;
-    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
-    transition:transform .15s ease, background .15s ease, border-color .15s ease;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn.primary{background:var(--navy); color:#fff;}
-  .btn.primary:hover{background:var(--navy-deep);}
-  .btn.outline{border:1.5px solid var(--border); color:var(--ink); background:var(--surface);}
-  .btn.outline:hover{border-color:var(--navy); color:var(--navy);}
-  .hero-contacts{display:flex; flex-wrap:wrap; gap:20px; font-size:14px; color:var(--ink-soft);}
-  .hero-contacts a{text-decoration:none; border-bottom:1px solid var(--border);}
-  .hero-contacts a:hover{color:var(--navy); border-color:var(--navy);}
+/* Hero */
+.hero{padding:84px 0 68px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.eyebrow{font-size:13.5px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:9px;margin-bottom:18px}
+.dot{width:8px;height:8px;border-radius:50%;background:#3fa66b;box-shadow:0 0 0 4px rgba(63,166,107,.18)}
+h1{font-family:var(--display);font-weight:800;letter-spacing:-.025em;font-size:clamp(33px,4.6vw,50px);line-height:1.1;margin-bottom:20px}
+h1 span{color:var(--navy)}
+.lede{font-size:17.5px;color:var(--soft);max-width:54ch;margin-bottom:32px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.btn{font-size:14.5px;font-weight:600;padding:13px 24px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,opacity .15s,border-color .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--navy);color:#fff}
+.btn.primary:hover{opacity:.92}
+.btn.outline{border:1.5px solid var(--border);background:var(--surface)}
+.btn.outline:hover{border-color:var(--navy);color:var(--navy)}
+.links{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--soft)}
+.links a{text-decoration:none;border-bottom:1px solid var(--border)}
+.links a:hover{color:var(--navy);border-color:var(--navy)}
 
-  .hero-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px;
-    padding:28px; box-shadow:0 1px 2px rgba(28,32,39,.04);
-  }
-  .hero-card .avatar{
-    width:150px; height:150px; border-radius:50%;
-    background:linear-gradient(135deg,var(--navy),#3a5a8a);
-    color:#fff; display:flex; align-items:center; justify-content:center;
-    font-family:var(--display); font-weight:700; font-size:22px; margin-bottom:18px;
-    overflow:hidden;
-  }
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.profile{padding:28px}
+.avatar{width:128px;height:128px;border-radius:50%;background:linear-gradient(135deg,#23395b,#3a5a8a);color:#fff;display:flex;align-items:center;justify-content:center;font:700 30px var(--display);margin-bottom:18px;overflow:hidden;position:relative}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.profile h2{font-family:var(--display);font-size:18px}
+.role{font-size:13.5px;color:var(--faint);margin-bottom:16px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--border);font-size:13.5px}
+.row .k{color:var(--soft)}
+.row .v{font-weight:600;text-align:right}
 
-  .hero-card .avatar img{
-    width:100%; height:100%;
-    object-fit:cover;
-    border-radius:50%;
-  }
-  .hero-card h3{font-family:var(--display); font-size:17px; margin-bottom:2px;}
-  .hero-card .role{font-size:13.5px; color:var(--ink-faint); margin-bottom:20px;}
-  .stat-row{display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid var(--border);}
-  .stat-row:first-of-type{border-top:none;}
-  .stat-row .lbl{font-size:13px; color:var(--ink-soft);}
-  .stat-row .val{font-size:13.5px; font-weight:600; color:var(--ink);}
+/* Sections */
+section{padding:76px 0;border-top:1px solid var(--border)}
+.label{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:10px}
+h2.title{font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,31px);letter-spacing:-.015em;margin-bottom:14px}
+.intro{color:var(--soft);max-width:62ch;margin-bottom:40px;font-size:15.5px}
 
-  /* ---------------- Section shell ---------------- */
-  section{padding:72px 0; border-top:1px solid var(--border);}
-  .section-label{
-    font-size:12.5px; font-weight:700; letter-spacing:.06em; color:var(--gold);
-    margin-bottom:10px;
-  }
-  .section-title{
-    font-family:var(--display); font-weight:700; font-size:clamp(24px,3vw,32px);
-    letter-spacing:-.01em; margin-bottom:14px;
-  }
-  .section-intro{color:var(--ink-soft); max-width:62ch; margin-bottom:44px; font-size:15.5px;}
+.about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:52px}
+.about-grid p{color:var(--soft);margin-bottom:16px;max-width:62ch}
+.hl{color:var(--ink);font-weight:600}
+.facts{list-style:none}
+.facts li{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);font-size:14px}
+.facts li:last-child{border:none}
+.facts .k{color:var(--faint)}
+.facts .v{font-weight:500;text-align:right}
 
-  /* ---------------- About ---------------- */
-  .about-grid{display:grid; grid-template-columns:1.3fr .7fr; gap:52px;}
-  .about-grid p{color:var(--ink-soft); margin-bottom:16px; max-width:60ch;}
-  .about-grid p .hl{color:var(--ink); font-weight:600;}
-  .fact-list{list-style:none;}
-  .fact-list li{
-    display:flex; justify-content:space-between; padding:13px 0;
-    border-bottom:1px solid var(--border); font-size:14px;
-  }
-  .fact-list li:last-child{border-bottom:none;}
-  .fact-list .k{color:var(--ink-faint);}
-  .fact-list .v{color:var(--ink); font-weight:500; text-align:right;}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.skill{padding:22px}
+.skill h3{font-size:14px;font-weight:700;margin-bottom:12px;color:var(--navy)}
+.skill ul{list-style:none}
+.skill li{font-size:14px;color:var(--soft);padding:5px 0;display:flex;align-items:center;gap:9px}
+.skill li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
 
-  /* ---------------- Skills ---------------- */
-  .skill-groups{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:24px;}
-  .skill-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:22px;
-  }
-  .skill-card h4{font-size:14px; font-weight:700; margin-bottom:14px; color:var(--navy);}
-  .skill-card ul{list-style:none;}
-  .skill-card li{
-    font-size:14px; color:var(--ink-soft); padding:6px 0; display:flex; align-items:center; gap:9px;
-  }
-  .skill-card li::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0;}
+.timeline{list-style:none;border-left:2px solid var(--border);margin-left:6px}
+.tl{position:relative;padding:2px 0 38px 30px}
+.tl:last-child{padding-bottom:0}
+.tl::before{content:"";position:absolute;left:-8px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--navy);border:3px solid var(--bg)}
+.tl h3{font-family:var(--display);font-size:17.5px;font-weight:700}
+.kind{font-size:13.5px;color:var(--navy);font-weight:600;margin:2px 0 8px}
+.tl ul{list-style:none;margin-bottom:12px;max-width:66ch}
+.tl li{color:var(--soft);font-size:14.5px;padding:3px 0 3px 18px;position:relative}
+.tl li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:1.5px;background:var(--gold)}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{font-size:12px;color:var(--soft);background:var(--surface);border:1px solid var(--border);padding:4px 11px;border-radius:20px}
 
-  /* ---------------- Experience timeline ---------------- */
-  .timeline{list-style:none; border-left:2px solid var(--border); margin-left:6px;}
-  .tl-item{position:relative; padding:2px 0 40px 30px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:""; position:absolute; left:-7px; top:4px;
-    width:12px; height:12px; border-radius:50%; background:var(--navy); border:3px solid var(--bg);
-  }
-  .tl-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
-  .tl-item h3{font-family:var(--display); font-size:17.5px; font-weight:700;}
-  .tl-item .when{font-size:13px; color:var(--ink-faint); font-weight:500; white-space:nowrap;}
-  .tl-item .kind{font-size:13.5px; color:var(--navy); font-weight:600; margin-bottom:8px;}
-  .tl-item p{color:var(--ink-soft); font-size:14.5px; max-width:62ch; margin-bottom:10px;}
-  .pill-row{display:flex; flex-wrap:wrap; gap:7px;}
-  .pill{
-    font-size:12px; color:var(--ink-soft); background:var(--surface);
-    border:1px solid var(--border); padding:4px 10px; border-radius:20px;
-  }
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+.project{padding:26px;display:flex;flex-direction:column;gap:12px}
+.project .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.project h3{font-family:var(--display);font-size:17px;font-weight:700}
+.tag{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--tint);padding:4px 9px;border-radius:4px;white-space:nowrap}
+.project p{color:var(--soft);font-size:14px;flex-grow:1}
 
-  /* ---------------- Projects ---------------- */
-  .project-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px;}
-  .project-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px;
-    padding:26px; display:flex; flex-direction:column; gap:12px;
-  }
-  .project-card .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
-  .project-card h3{font-family:var(--display); font-size:17px; font-weight:700;}
-  .project-card .tag{
-    font-size:11.5px; font-weight:600; color:var(--navy); background:rgba(35,57,91,.08);
-    padding:4px 9px; border-radius:4px; white-space:nowrap;
-  }
-  .project-card p{color:var(--ink-soft); font-size:14px; flex-grow:1;}
-  .project-card .result{
-    font-size:13px; color:var(--ink); font-weight:600; padding-top:10px; border-top:1px solid var(--border);
-  }
-  .project-card .result .lbl{color:var(--gold); font-weight:700;}
+.edu{padding:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.edu h3{font-family:var(--display);font-size:17px;margin-bottom:4px}
+.edu .school{color:var(--soft);font-size:14.5px}
+.edu .when{font-size:13.5px;color:var(--faint);font-weight:500}
 
-  /* ---------------- Education ---------------- */
-  .edu-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px;
-    padding:28px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
-  }
-  .edu-card h3{font-family:var(--display); font-size:17px; margin-bottom:4px;}
-  .edu-card .school{color:var(--ink-soft); font-size:14.5px;}
-  .edu-card .when{font-size:13.5px; color:var(--ink-faint); font-weight:500; white-space:nowrap;}
+.contact{background:var(--navy-deep);color:#fff;border-radius:16px;padding:52px 44px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.contact h2{font-family:var(--display);font-size:clamp(24px,3vw,30px);margin-bottom:12px}
+.contact p{color:#c3cbdb;max-width:46ch;font-size:15px}
+.clist{list-style:none;display:flex;flex-direction:column;gap:14px}
+.clist li{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:12px}
+.clist .k{font-size:12px;color:#93a0bd;text-transform:uppercase;letter-spacing:.05em}
+.clist a,.clist span.v{color:#fff;text-decoration:none;font-weight:500;font-size:14.5px;text-align:right;word-break:break-word}
+.clist a:hover{color:#e0c98a}
+footer{padding:30px;text-align:center;font-size:13px;color:var(--faint)}
 
-  /* ---------------- Contact ---------------- */
-  .contact-box{
-    background:var(--navy-deep); color:#fff; border-radius:14px;
-    padding:56px 48px; display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center;
-  }
-  .contact-box h2{font-family:var(--display); font-size:clamp(24px,3vw,30px); margin-bottom:14px;}
-  .contact-box p{color:#c3cbdb; max-width:48ch; font-size:15px;}
-  .contact-list{list-style:none; display:flex; flex-direction:column; gap:14px;}
-  .contact-list li{display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.14); padding-bottom:12px;}
-  .contact-list .k{font-size:12.5px; color:#93a0bd; text-transform:uppercase; letter-spacing:.04em;}
-  .contact-list a{color:#fff; text-decoration:none; font-weight:500; font-size:14.5px;}
-  .contact-list a:hover{color:#e0c98a;}
-
-  footer{padding:32px; text-align:center; font-size:13px; color:var(--ink-faint);}
-
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
-
-  @media (max-width:860px){
-    .hero-grid, .about-grid, .contact-box{grid-template-columns:1fr;}
-    .nav-links{display:none;}
-    .nav-toggle{display:inline-block;}
-  }
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media (max-width:860px){
+  .hero{padding:56px 0 48px}
+  .hero-grid,.about-grid,.contact{grid-template-columns:1fr}
+  .contact{padding:36px 26px}
+  .nav-toggle{display:inline-block}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:8px 28px 14px}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:11px 0;border:none}
+}
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="nav-inner">
-    
-    <ul class="nav-links">
+    <a href="#top" class="brand">Angelito Solis</a>
+    <ul class="nav-links" id="menu">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Contact</a>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Contact</a>
+      <button class="nav-toggle" id="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
   </div>
 </header>
 
-<section class="hero" style="border-top:none;">
+<main id="top">
+<section class="hero" style="border-top:none">
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow"><span class="dot"></span>Open to full-time and freelance roles</div>
-      <h1>I build software and handle the E-commerce work that keeps it running.</h1>
-      <p class="lede">
-        Full-stack developer who also covers the e-commerce side, payment integrations, back office
-        tools, WordPress and VPS setups, an auto-publishing system I built called NetGrid, plus
-        running Google Ads and day-to-day Shopify support.
-      </p>
-      <div class="hero-actions">
-        <a href="https://drive.google.com/file/d/1Va3wKOeE-f-KQwYR1W5ZNdATqYvCrPOS/view?usp=sharing" class="btn primary" id="resumeLink">Download resume (PDF)</a>
+      <h1>Full-stack and <span>Shopify website developer.</span></h1>
+      <p class="lede">I build Shopify sites and integrations, payment flows, and back-office tools using Next.js, Laravel, and WordPress. I've also spent 2+ years on the support side of a Shopify store, so I know what store owners and customers run into.</p>
+      <div class="actions">
+        <a href="https://drive.google.com/file/d/1Va3wKOeE-f-KQwYR1W5ZNdATqYvCrPOS/view?usp=sharing" class="btn primary" target="_blank" rel="noopener">Download resume</a>
         <a href="#projects" class="btn outline">View projects</a>
       </div>
-      <div class="hero-contacts">
+      <div class="links">
         <a href="mailto:solisangelito098@gmail.com">solisangelito098@gmail.com</a>
-        <a href="https://www.linkedin.com/in/angelito-solis-0a510928a/">linkedin.com/in/solisangelito</a>
-        <a href="https://github.com/AngelitoSolis">github.com/AngelitoSolis</a>
+        <a href="https://www.linkedin.com/in/angelito-solis-0a510928a/" target="_blank" rel="noopener">linkedin.com/in/solisangelito</a>
+        <a href="https://github.com/AngelitoSolis" target="_blank" rel="noopener">github.com/AngelitoSolis</a>
       </div>
     </div>
 
-    <div class="hero-card">
-      <div class="avatar">
-  <img src="photo.jpg" alt="Angelito Solis">
-</div>
-      <h3>Angelito Solis</h3>
-      <div class="role">Full-Stack Developer & E-Commerce Support</div>
-      <div class="stat-row"><span class="lbl">Based in</span><span class="val">Philippines</span></div>
-      <div class="stat-row"><span class="lbl">Focus</span><span class="val">Full-stack & E-commerce</span></div>
-      <div class="stat-row"><span class="lbl">Status</span><span class="val">Open to work</span></div>
-    </div>
+    <aside class="card profile" aria-label="Profile summary">
+      <div class="avatar">AS<img src="photo.jpg" alt="Portrait of Angelito Solis" onerror="this.remove()"></div>
+      <h2>Angelito V. Solis</h2>
+      <div class="role">Full-Stack & Shopify Website Developer</div>
+      <div class="row"><span class="k">Based in</span><span class="v">Pangasinan, Philippines</span></div>
+      <div class="row"><span class="k">Focus</span><span class="v">Full-stack & e-commerce</span></div>
+      <div class="row"><span class="k">Availability</span><span class="v">Open to work</span></div>
+    </aside>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap about-grid">
     <div>
-      <div class="section-label">ABOUT</div>
-      <h2 class="section-title">A little about me</h2>
-      <p>
-        I build and maintain web systems, I built <span class="hl">NetGrid</span>, a tool
-        that auto-publishes blogs to Shopify and WordPress, and I also handle day-to-day Shopify store
-        support and WordPress/VPS setups for clients.
-      </p>
-      <p>
-        I take on freelance and team work across e-commerce, back office systems, Google Ads,
-        and custom web tools. I try to keep my documentation clear and to the point. I like working
-        on things a real person actually has to use.
-      </p>
+      <div class="label">ABOUT</div>
+      <h2 class="title">A developer who has also worked the support desk</h2>
+      <p>I'm a Shopify website developer and full-stack developer. I built <span class="hl">NetGrid</span>, which publishes content to Shopify stores and WordPress blogs automatically. I've also connected Stripe and the Shopify Admin API, and put client websites live on VPS servers that I set up and manage.</p>
+      <p>I've also spent <span class="hl">2+ years in e-commerce support</span>, answering customers, sorting out order problems, running Google Ads, and handling reviews. Because of that, the tools I build match how a store is really run day to day.</p>
     </div>
-    <div>
-      <ul class="fact-list">
-        <li><span class="k">Education</span><span class="v">BSIT, PSU Urdaneta</span></li>
-        <li><span class="k">Focus areas</span><span class="v">Web, E-commerce, Automation</span></li>
-        <li><span class="k">Availability</span><span class="v">Full-time / Freelance</span></li>
-      </ul>
-    </div>
+    <ul class="facts">
+      <li><span class="k">Education</span><span class="v">BSIT, PSU Urdaneta</span></li>
+      <li><span class="k">Focus areas</span><span class="v">Shopify, web, automation</span></li>
+      <li><span class="k">Looking for</span><span class="v">Full-time or freelance</span></li>
+    </ul>
   </div>
 </section>
 
 <section id="skills">
   <div class="wrap">
-    <div class="section-label">SKILLS</div>
-    <h2 class="section-title">What I work with</h2>
-    <p class="section-intro">Everything here is stuff I've actually used on real projects, not just read about.</p>
-    <div class="skill-groups">
-      <div class="skill-card">
-        <h4>Languages</h4>
-        <ul>
-          <li>JavaScript / TypeScript</li>
-          <li>SQL</li>
-          <li>PHP</li>
-          <li>Python</li>
-          <li>C#</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h4>Frameworks</h4>
-        <ul>
-          <li>Next.js</li>
-          <li>Laravel</li>
-          <li>Flutter</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h4>Platforms & APIs</h4>
-        <ul>
-          <li>Shopify (OAuth / Admin API)</li>
-          <li>WordPress</li>
-          <li>Stripe</li>
-          <li>VPS Hosting & Management</li>
-          <li>MySQL / SQLite</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h4>E-Commerce & Support</h4>
-        <ul>
-          <li>Shopify order management</li>
-          <li>Customer inquiry handling</li>
-          <li>Concern resolution</li>
-          <li>Google Ads campaigns</li>
-          <li>Reviews management</li>
-          <li>Store operations</li>
-        </ul>
-      </div>
-      
+    <div class="label">SKILLS</div>
+    <h2 class="title">What I work with</h2>
+    <p class="intro">Everything here I've used in actual projects or in my daily work.</p>
+    <div class="skills">
+      <div class="card skill"><h3>Languages</h3><ul><li>JavaScript / TypeScript</li><li>PHP</li><li>Python</li><li>C#</li><li>SQL</li></ul></div>
+      <div class="card skill"><h3>Frameworks</h3><ul><li>Next.js</li><li>Laravel</li><li>Flutter</li></ul></div>
+      <div class="card skill"><h3>Platforms & Data</h3><ul><li>Shopify development</li><li>Shopify Admin API & OAuth</li><li>WordPress</li><li>Stripe</li><li>VPS hosting</li><li>MySQL / SQLite</li></ul></div>
+      <div class="card skill"><h3>E-Commerce & Support</h3><ul><li>Order management</li><li>Customer inquiries & concerns</li><li>Google Ads campaigns</li><li>Online reviews</li><li>Store operations</li></ul></div>
     </div>
   </div>
 </section>
 
 <section id="experience">
   <div class="wrap">
-    <div class="section-label">EXPERIENCE</div>
-    <h2 class="section-title">Recent work</h2>
-    <ul class="timeline">
-      
-      
-    
-      <li class="tl-item">
-        <div class="tl-top"><h3>Customer Service Support - Shopify E-Commerce</h3><span class="when"></span></div>
+    <div class="label">EXPERIENCE</div>
+    <h2 class="title">My work so far</h2>
+    <ol class="timeline">
+      <li class="tl">
+        <h3>Shopify Website Development</h3>
+        <div class="kind">Shopify Website Developer</div>
+        <ul>
+          <li>Develop for Shopify using the Admin API and OAuth, including content automation</li>
+          <li>Connect stores to custom tools, such as NetGrid and Stripe-based checkout flows</li>
+        </ul>
+        <div class="pills"><span class="pill">Shopify</span><span class="pill">Admin API</span><span class="pill">OAuth</span></div>
+      </li>
+      <li class="tl">
+        <h3>E-Commerce Support & Operations, Shopify</h3>
         <div class="kind">Support Specialist</div>
-        <p>Handle customer concerns, order issues, and general inquiries for a Shopify store, the
-        support side of running an online shop.</p>
-        <div class="pill-row"><span class="pill">Shopify</span><span class="pill">Order Management</span><span class="pill">Customer Support</span></div>
+        <ul>
+          <li>2+ years in backend operations, answering customer concerns, order issues, and inquiries for a Shopify peptides store</li>
+          <li>Run Google Ads campaigns and manage online reviews as part of day-to-day store operations</li>
+        </ul>
+        <div class="pills"><span class="pill">Shopify</span><span class="pill">Order management</span><span class="pill">Google Ads</span><span class="pill">Reviews</span></div>
       </li>
-      <li class="tl-item">
-        <div class="tl-top"><h3>Google Ads & Reviews Management</h3><span class="when"></span></div>
-        <div class="kind">Specialist</div>
-        <p>Run Google Ads campaigns and manage reviews as part of the day-to-day e-commerce work,
-        alongside the technical and support side.</p>
-        <div class="pill-row"><span class="pill">Google Ads</span><span class="pill">Reviews Management</span></div>
-      </li>
-        <li class="tl-item">
-        <div class="tl-top"><h3>NetGrid — Automated Publishing System</h3><span class="when"><span></div>
+      <li class="tl">
+        <h3>NetGrid, Automated Publishing System</h3>
         <div class="kind">Developer</div>
-        <p>Built NetGrid to auto-publish content to Shopify stores and WordPress blogs, so it
-        doesn't have to be done by hand every time.</p>
-        <div class="pill-row"><span class="pill">Shopify</span><span class="pill">WordPress</span><span class="pill">Automation</span></div>
+        <ul>
+          <li>Built a system that auto-publishes content to Shopify stores and WordPress blogs</li>
+          <li>No more copying the same post to each platform by hand</li>
+        </ul>
+        <div class="pills"><span class="pill">Shopify</span><span class="pill">WordPress</span><span class="pill">Automation</span></div>
       </li>
-      <li class="tl-item">
-        <div class="tl-top"><h3>WordPress & VPS Website Builds</h3><span class="when"></span></div>
+      <li class="tl">
+        <h3>Next.js Commerce Integrations</h3>
         <div class="kind">Developer</div>
-        <p>Build and deploy client websites on WordPress, plus set up and manage the VPS hosting
-        behind them.</p>
-        <div class="pill-row"><span class="pill">WordPress</span><span class="pill">VPS</span><span class="pill">Deployment</span></div>
+        <ul>
+          <li>Integrated Stripe payments into Next.js projects, including webhook forwarding with the Stripe CLI</li>
+          <li>Set up Shopify OAuth and Admin API token integration</li>
+        </ul>
+        <div class="pills"><span class="pill">Next.js</span><span class="pill">Stripe</span><span class="pill">Shopify OAuth</span></div>
       </li>
-      <li class="tl-item">
-        <div class="tl-top"><h3>Next.js Commerce Integrations</h3><span class="when"></span></div>
+      <li class="tl">
+        <h3>WordPress & VPS Website Builds</h3>
         <div class="kind">Developer</div>
-        <p>Worked on Next.js projects with Stripe payments, webhook forwarding through the Stripe
-        CLI, plus Shopify OAuth and admin API integration.</p>
-        <div class="pill-row"><span class="pill">Next.js</span><span class="pill">Stripe API</span><span class="pill">Shopify OAuth</span></div>
+        <ul>
+          <li>Build and deploy client websites on WordPress</li>
+          <li>Set up and manage the VPS hosting environments behind them</li>
+        </ul>
+        <div class="pills"><span class="pill">WordPress</span><span class="pill">VPS</span><span class="pill">Deployment</span></div>
       </li>
-      <li class="tl-item">
-        <div class="tl-top"><h3>Daily Time Record (DTR) System</h3><span class="when"></span></div>
-        <div class="kind">Developer</div>
-        <p>Built a Laravel attendance system with its own auth layer, plus rules for lateness and
-        undertime. Started on SQLite, then moved everything over to MySQL.</p>
-        <div class="pill-row"><span class="pill">Laravel</span><span class="pill">MySQL</span><span class="pill">Auth Middleware</span></div>
-      </li>
-    </ul>
+    </ol>
   </div>
 </section>
 
 <section id="projects">
   <div class="wrap">
-    <div class="section-label">PROJECTS</div>
-    <h2 class="section-title">Selected work</h2>
-    <div class="project-grid">
-      <div class="project-card">
+    <div class="label">PROJECTS</div>
+    <h2 class="title">Selected work</h2>
+    <div class="projects">
+      <article class="card project">
         <div class="top"><h3>NetGrid</h3><span class="tag">Automation</span></div>
-        <p>Auto-publishes content to Shopify stores and WordPress blogs, so it doesn't have to be done manually.</p>
-        <div class="result"><span class="lbl">Outcome —</span> My most recent build, live and running across both platforms.</div>
-      </div>
-      <div class="project-card">
-        <div class="top"><h3>WordPress & VPS Builds</h3><span class="tag">Web / Hosting</span></div>
-        <p>Client websites on WordPress, plus the VPS setup and hosting management behind them.</p>
-        <div class="result"><span class="lbl">Outcome —</span> Handled everything from build to deployment.</div>
-      </div>
-      <div class="project-card">
-        <div class="top"><h3>DTR Attendance System</h3><span class="tag">Web App</span></div>
-        <p>A Laravel tool for tracking staff attendance, with real lateness and undertime logic instead of a plain in-out log.</p>
-        <div class="result"><span class="lbl">Outcome —</span> Working DTR Attendance.</div>
-      </div>
+        <p>Publishes content to Shopify stores and WordPress blogs automatically, so posts no longer have to be uploaded to each one by hand.</p>
+        <div class="pills"><span class="pill">Shopify</span><span class="pill">WordPress</span></div>
+      </article>
+      <article class="card project">
+        <div class="top"><h3>Shopify Development</h3><span class="tag">Shopify</span></div>
+        <p>Shopify OAuth and Admin API token setup, plus content automation that publishes straight to the store.</p>
+        <div class="pills"><span class="pill">Shopify</span><span class="pill">Admin API</span></div>
+      </article>
+      <article class="card project">
+        <div class="top"><h3>Next.js Commerce</h3><span class="tag">Payments</span></div>
+        <p>Stripe payments with webhook forwarding through the Stripe CLI, plus Shopify OAuth and Admin API token integration.</p>
+        <div class="pills"><span class="pill">Next.js</span><span class="pill">Stripe</span></div>
+      </article>
+      <article class="card project">
+        <div class="top"><h3>DTR Attendance System</h3><span class="tag">Web app</span></div>
+        <p>A Laravel attendance tracker with custom authentication middleware, lateness and undertime rules, and paginated history with date filtering. I also migrated its data layer from SQLite to MySQL.</p>
+        <div class="pills"><span class="pill">Laravel</span><span class="pill">MySQL</span></div>
+      </article>
+      <article class="card project">
+        <div class="top"><h3>WordPress & VPS Builds</h3><span class="tag">Web & hosting</span></div>
+        <p>Client websites on WordPress, hosted on VPS servers that I set up and look after.</p>
+        <div class="pills"><span class="pill">WordPress</span><span class="pill">VPS</span></div>
+      </article>
     </div>
   </div>
 </section>
 
 <section id="education">
   <div class="wrap">
-    <div class="section-label">EDUCATION</div>
-    <h2 class="section-title">Background</h2>
-    <div class="edu-card">
+    <div class="label">EDUCATION</div>
+    <h2 class="title">Background</h2>
+    <div class="card edu">
       <div>
         <h3>Bachelor of Science in Information Technology</h3>
-        <div class="school">Pangasinan State University – Urdaneta City Campus</div>
+        <div class="school">Pangasinan State University, Urdaneta City Campus</div>
       </div>
       <div class="when">2025</div>
     </div>
@@ -442,21 +322,29 @@
 
 <section id="contact">
   <div class="wrap">
-    <div class="contact-box">
+    <div class="contact">
       <div>
-        <h2>Let's talk.</h2>
-        <p>Open to full-time roles and freelance projects. Reach out any time.</p>
+        <h2>Got a project in mind?</h2>
+        <p>I'm open to full-time roles and freelance work. Send me a message and tell me what you need.</p>
       </div>
-      <ul class="contact-list">
+      <ul class="clist">
         <li><span class="k">Email</span><a href="mailto:solisangelito098@gmail.com">solisangelito098@gmail.com</a></li>
-        <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/angelito-solis-0a510928a/">linkedin.com/in/solisangelito</a></li>
-        <li><span class="k">GitHub</span><a href="https://github.com/AngelitoSolis">github.com/AngelitoSolis</a></li>
-        <li><span class="k">Location</span><span style="font-weight:500;">Pangasinan, Philippines</span></li>
+        <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/angelito-solis-0a510928a/" target="_blank" rel="noopener">linkedin.com/in/solisangelito</a></li>
+        <li><span class="k">GitHub</span><a href="https://github.com/AngelitoSolis" target="_blank" rel="noopener">github.com/AngelitoSolis</a></li>
+        <li><span class="k">Location</span><span class="v">Pangasinan, Philippines</span></li>
       </ul>
     </div>
   </div>
 </section>
+</main>
 
+<footer>© <span id="yr"></span> Angelito V. Solis</footer>
 
+<script>
+  const t=document.getElementById('toggle'),m=document.getElementById('menu');
+  t.addEventListener('click',()=>{const o=m.classList.toggle('open');t.setAttribute('aria-expanded',o)});
+  m.addEventListener('click',e=>{if(e.target.tagName==='A'){m.classList.remove('open');t.setAttribute('aria-expanded','false')}});
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
